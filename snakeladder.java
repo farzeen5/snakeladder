@@ -9,13 +9,24 @@ class Game{
 public class snakeladder {
 
 	public static void main(String[] args) {
+		int turns = 0;
 		Game player1 = new Game();
+		while(player1.position<100) {
 		int dicenumber= dice();
 		int option= condition();
 		int move = dicenumber*option;
+		if(player1.position+move>100) {
+			continue;
+		}
 		player1.position=player1.position+move;
+		if(player1.position<0) {
+			player1.position=0;
+		}
+		turns++;
+	}
 		System.out.println("position of player1 is : " +player1.position);
-
+		System.out.println("number of turns of dice are :" +turns);
+		
 	}
 	
 		private static int dice() {
@@ -41,6 +52,7 @@ public class snakeladder {
 				System.out.println("snake");
 			}
 			return temp;
+			
 			
 		}
 }
